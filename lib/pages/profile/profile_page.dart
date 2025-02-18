@@ -134,7 +134,7 @@ class ProfileSection extends StatelessWidget {
                               children: [
                                 const AnimatedText(count: 8, label: "Years of\nExperience"),
                               8.horizontalSpace,
-                                const AnimatedText(count: 16, label: "Projects\nCompleted"),
+                                const AnimatedText(count: 15, label: "Projects\nCompleted"),
                               8.horizontalSpace,
 
                             ],),
