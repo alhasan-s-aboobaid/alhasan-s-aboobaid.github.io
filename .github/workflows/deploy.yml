@@ -33,7 +33,7 @@ jobs:
         run: flutter clean && flutter pub get
 
       - name: Build Flutter Web
-        run: flutter build web --release --base-href="/your-repo/"
+        run: flutter build web --release --base-href="/alhasan-s-aboobaid.github.io/"
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
