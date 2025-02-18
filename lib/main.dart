@@ -30,6 +30,7 @@ void main() {
       fontSizeResolver: FontSizeResolvers.height,
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
+        title: "Alhasan Abo Obaid Portfolio",
         theme: getThemeData(ThemeType.LightTheme),
         home: const HomePage(),
       ),
