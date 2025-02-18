@@ -21,10 +21,7 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.24.5'  # Change to the latest stable version
-
-      - name: Debug Flutter Setup
-        run: flutter doctor -v
+          flutter-version: '3.24.5'
 
       - name: Clean and Get Dependencies
         run: flutter clean && flutter pub get
@@ -37,4 +34,3 @@ jobs:
         with:
           branch: gh-pages
           folder: ./build/web
-          clean: true
