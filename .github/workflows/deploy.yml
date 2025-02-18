@@ -26,18 +26,15 @@ jobs:
       - name: Debug Flutter Setup
         run: flutter doctor -v
 
-      - name: Enable Flutter Web
-        run: flutter config --enable-web
-
       - name: Clean and Get Dependencies
         run: flutter clean && flutter pub get
 
       - name: Build Flutter Web
-        run: flutter build web --release --base-href="/alhasan-s-aboobaid.github.io/"
+        run: flutter build web --release #--base-href="/alhasan-s-aboobaid.github.io/"
 
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: peaceiris/actions-gh-pages@v3
         with:
           branch: gh-pages
-          folder: build/web
+          folder: ./build/web
           clean: true
