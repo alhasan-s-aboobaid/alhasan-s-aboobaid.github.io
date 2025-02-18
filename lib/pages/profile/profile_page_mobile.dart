@@ -60,7 +60,7 @@ class ProfileSectionMobile extends StatelessWidget {
                   duration: Duration(milliseconds: 400),
                   child: Text("👋 Hi there, I'm Alhasan",
                       style: Theme.of(context).styles.bodyRegularLarge.copyWith(
-                          color: Theme.of(context).themeColors.textBody, fontSize: 16.sp)),
+                          color: Theme.of(context).themeColors.textBody, fontSize: sizes.homeGreetingTitle)),
                 ),
                 8.verticalSpace,
                 EntranceFader(
