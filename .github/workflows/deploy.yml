@@ -40,3 +40,4 @@ jobs:
         with:
           branch: master
           folder: build/web
+          clean: true
