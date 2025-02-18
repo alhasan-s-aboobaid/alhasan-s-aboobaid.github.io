@@ -35,5 +35,7 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
+          branch: gh-pages
           github_token: ${{ secrets.GITHUB_TOKEN }}
           folder: ./build/web
+          keep_files: true
