@@ -50,17 +50,15 @@ class _HomePageState extends State<HomePage> {
             repeat: ImageRepeat.repeat,
           ),
         ),
-        child: Padding(
-          padding: EdgeInsets.all(/*sizes.sectionPadding*/0),
-          child: PageView(
-            controller: pageProvider.pageController,
-            children: [
-              ScreenSizeUtil.getScreenType(context) == ScreenType.desktop ? ProfileSection(sizes: sizes): ProfileSectionMobile(sizes: sizes),
-              SkillsPage(sizes: sizes),
-              ProjectsSection(sizes: sizes, screenType: screenType),
-              ProjectsSection(sizes: sizes, screenType: screenType),
-            ],
-          )
+        child: PageView(
+          controller: pageProvider.pageController,
+          physics: NeverScrollableScrollPhysics(),
+          children: [
+            ScreenSizeUtil.getScreenType(context) == ScreenType.desktop ? ProfileSection(sizes: sizes): ProfileSectionMobile(sizes: sizes),
+            SkillsPage(sizes: sizes),
+            ProjectsSection(sizes: sizes, screenType: screenType),
+            ProjectsSection(sizes: sizes, screenType: screenType),
+          ],
         ),
       ),
     );

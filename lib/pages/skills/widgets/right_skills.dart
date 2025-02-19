@@ -37,7 +37,7 @@ class _RightSkillsState extends State<RightSkills> {
         Text("NonTech Skills", style: Theme.of(context).styles.headingSmall.copyWith(
             color: Colors.white
         ),),
-        8.verticalSpace,
+        12.verticalSpace,
         SizedBox(
           width: MediaQuery.of(context).size.width,
           child: Column(
@@ -51,30 +51,34 @@ class _RightSkillsState extends State<RightSkills> {
                     return Container(
                       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                       decoration: BoxDecoration(
-                          color: _hover ? Theme.of(context).themeColors.primaryLight : Theme.of(context).themeColors.disabledButton,
-                          borderRadius: 8.radiusAll
+                          color: Theme.of(context).themeColors.textBody,
+                          borderRadius: 8.radiusAll,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.white, blurRadius: 4, blurStyle: BlurStyle.outer, spreadRadius: 2
+                          )
+                        ]
                       ),
-                      child: MouseRegion(
-                        cursor: SystemMouseCursors.click,
-
-                        onEnter: (event) {
-                          setState(() {
-                            _hover = true;
-                          });
-                        },
-                        onExit: (event) {
-                          setState(() {
-                            _hover = false;
-                          });
-                        },
-                        child: Text(
-                          skill['name'],
-                          style: TextStyle(
-                            fontSize: widget.isVertical ? 12.sp : 18.sp,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Container(
+                            width: 8, height: 8,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.black
+                            ),
                           ),
-                        ),
+                          6.horizontalSpace,
+                          Text(
+                            skill['name'],
+                            style: TextStyle(
+                              fontSize: widget.isVertical ? 12.sp : 16.sp,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ],
                       ),
                     );
                   }).toList(),

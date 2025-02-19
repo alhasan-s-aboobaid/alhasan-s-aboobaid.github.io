@@ -34,6 +34,7 @@ class _LeftSkillsState extends State<LeftSkills> {
     {'name': 'Flutter web','color': Colors.pink},
     {'name': 'Firebase & Backend Integration','color': Colors.brown},
     {'name': 'Deeplink','color': Colors.blue},
+    {'name': 'CI/CD','color': Colors.blue},
     {'name': 'UI/UX & Animations','color': Colors.grey},
     {'name': 'Performance Optimization','color': Colors.blueGrey},
     {'name': 'Deployment & DevOps','color': Colors.pink},
@@ -109,15 +110,20 @@ class _LeftSkillsState extends State<LeftSkills> {
           delay: Duration(milliseconds: 1000),
           child: SizedBox(
             child: Wrap(
-              runSpacing: 10,
-              spacing: 10,
+              runSpacing: 12,
+              spacing: 12,
               children: [
                 ...otherSkills.map((skill) {
                   return Container(
                     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                     decoration: BoxDecoration(
                         color: Colors.grey[50],
-                        borderRadius: 8.radiusAll
+                        borderRadius: 8.radiusAll,
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.white, blurRadius: 4, blurStyle: BlurStyle.outer, spreadRadius: 2
+                          )
+                        ]
                     ),
                     child: Text(
                       skill['name'],
