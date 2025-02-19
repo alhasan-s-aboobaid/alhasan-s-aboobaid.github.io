@@ -98,17 +98,18 @@ class _LeftSkillsState extends State<LeftSkills> {
                           minHeight: 5,
                           borderRadius: BorderRadius.circular(5),
                         ),
-                        SizedBox(height: 20),
+                        20.verticalSpace
                       ],
                     );
                   },
                 );
-              }).toList(),
+              }),
             ],)),
         8.verticalSpace,
         EntranceFader(
-          delay: Duration(milliseconds: 1000),
-          child: SizedBox(
+          delay: const Duration(milliseconds: 1000),
+          child: Container(
+            padding: 6.all,
             child: Wrap(
               runSpacing: 12,
               spacing: 12,
@@ -119,7 +120,7 @@ class _LeftSkillsState extends State<LeftSkills> {
                     decoration: BoxDecoration(
                         color: Colors.grey[50],
                         borderRadius: 8.radiusAll,
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                               color: Colors.white, blurRadius: 4, blurStyle: BlurStyle.outer, spreadRadius: 2
                           )
@@ -134,7 +135,7 @@ class _LeftSkillsState extends State<LeftSkills> {
                       ),
                     ),
                   );
-                }).toList(),
+                }),
               ],
             ),
           ),

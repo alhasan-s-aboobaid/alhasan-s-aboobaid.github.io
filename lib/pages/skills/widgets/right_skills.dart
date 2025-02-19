@@ -37,7 +37,8 @@ class _RightSkillsState extends State<RightSkills> {
             color: Colors.white
         ),),
         12.verticalSpace,
-        SizedBox(
+        Container(
+          padding: 6.all,
           width: MediaQuery.of(context).size.width,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
