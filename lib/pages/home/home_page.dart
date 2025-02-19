@@ -38,8 +38,8 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       key: _scaffoldKey,
-      drawer: const CustomDrawer(),
-      drawerScrimColor: Colors.black.withOpacity(0.5),
+      //drawer: const CustomDrawer(),
+      //drawerScrimColor: Colors.black.withOpacity(0.5),
       appBar: CustomAppBar(sizes: sizes, ),
       body: Container(
         width: MediaQuery.of(context).size.width,

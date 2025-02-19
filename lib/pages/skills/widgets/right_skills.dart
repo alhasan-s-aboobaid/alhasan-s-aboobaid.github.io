@@ -1,4 +1,5 @@
 import 'package:alhasan_abo_obaid/core/theme_manager/base_theme/base_theme_extension.dart';
+import 'package:alhasan_abo_obaid/core/theme_manager/text_theme/text_theme_extension.dart';
 import 'package:alhasan_abo_obaid/core/utils/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -30,50 +31,59 @@ class _RightSkillsState extends State<RightSkills> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: MediaQuery.of(context).size.width,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Wrap(
-            runSpacing: widget.isVertical ? 10 : 20,
-            spacing: widget.isVertical ? 10 : 20,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text("NonTech Skills", style: Theme.of(context).styles.headingSmall.copyWith(
+            color: Colors.white
+        ),),
+        8.verticalSpace,
+        SizedBox(
+          width: MediaQuery.of(context).size.width,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ...otherSkills2.map((skill) {
-                return Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                  decoration: BoxDecoration(
-                      color: _hover ? Theme.of(context).themeColors.primaryLight : Theme.of(context).themeColors.disabledButton,
-                      borderRadius: 8.radiusAll
-                  ),
-                  child: MouseRegion(
-                    cursor: SystemMouseCursors.click,
-
-                    onEnter: (event) {
-                      setState(() {
-                        _hover = true;
-                      });
-                    },
-                    onExit: (event) {
-                      setState(() {
-                        _hover = false;
-                      });
-                    },
-                    child: Text(
-                      skill['name'],
-                      style: TextStyle(
-                        fontSize: widget.isVertical ? 12.sp : 18.sp,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
+              Wrap(
+                runSpacing: widget.isVertical ? 10 : 20,
+                spacing: widget.isVertical ? 10 : 20,
+                children: [
+                  ...otherSkills2.map((skill) {
+                    return Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                      decoration: BoxDecoration(
+                          color: _hover ? Theme.of(context).themeColors.primaryLight : Theme.of(context).themeColors.disabledButton,
+                          borderRadius: 8.radiusAll
                       ),
-                    ),
-                  ),
-                );
-              }).toList(),
+                      child: MouseRegion(
+                        cursor: SystemMouseCursors.click,
+
+                        onEnter: (event) {
+                          setState(() {
+                            _hover = true;
+                          });
+                        },
+                        onExit: (event) {
+                          setState(() {
+                            _hover = false;
+                          });
+                        },
+                        child: Text(
+                          skill['name'],
+                          style: TextStyle(
+                            fontSize: widget.isVertical ? 12.sp : 18.sp,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
+                    );
+                  }).toList(),
+                ],
+              ),
             ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

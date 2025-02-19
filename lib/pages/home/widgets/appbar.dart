@@ -44,7 +44,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
         padding: EdgeInsets.symmetric(horizontal: widget.sizes.sectionPadding),
         child: Align(
             alignment: Alignment.center,
-            child: isDesktop ? _buildDesktopNav(pageProvider) : _buildMobileNav()),
+            child:  _buildDesktopNav(pageProvider)),
       ),
     );
   }
@@ -63,7 +63,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
           ],
         ),
 
-        // Social Icons & Theme Toggle
+        if(ScreenSizeUtil.getScreenType(context) == ScreenType.desktop)
         Row(
           children: [
             _socialIcon(FontAwesomeIcons.facebook, onTap: () {
@@ -89,7 +89,6 @@ class _CustomAppBarState extends State<CustomAppBar> {
                 .bodyRegularLarge
                 .copyWith(color: Theme.of(context).themeColors.textBody)),
 
-        //Icon(Icons.wb_sunny, color: Colors.yellow), // Theme Toggle
       ],
     );
   }
@@ -123,6 +122,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
             return Text(
               text[i],
               style: Theme.of(context).styles.headingLarge.copyWith(
+                fontSize: ScreenSizeUtil.getScreenType(context) == ScreenType.desktop ? null : 16.sp,
                 color: i < charsToFill
                     ? Theme.of(context).themeColors.primaryColor // Color for filled characters
                     : Theme.of(context).themeColors.disabledButton,

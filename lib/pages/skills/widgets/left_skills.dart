@@ -83,7 +83,7 @@ class _LeftSkillsState extends State<LeftSkills> {
                             Text(
                               '${(value * 100).toStringAsFixed(0)}%',
                               style: TextStyle(
-                                fontSize: 16,
+                                fontSize: 16.sp,
                                 color: Colors.grey[600],
                               ),
                             ),
