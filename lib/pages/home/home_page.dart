@@ -56,7 +56,8 @@ class _HomePageState extends State<HomePage> {
             controller: pageProvider.pageController,
             children: [
               ScreenSizeUtil.getScreenType(context) == ScreenType.desktop ? ProfileSection(sizes: sizes): ProfileSectionMobile(sizes: sizes),
-              SkillsPage(sizes: sizes),
+              //SkillsPage(sizes: sizes),
+              ProjectsSection(sizes: sizes, screenType: screenType),
               ProjectsSection(sizes: sizes, screenType: screenType),
               ProjectsSection(sizes: sizes, screenType: screenType)
             ],
