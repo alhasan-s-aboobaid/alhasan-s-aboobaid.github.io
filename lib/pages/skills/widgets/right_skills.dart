@@ -27,7 +27,6 @@ class _RightSkillsState extends State<RightSkills> {
     {'name': 'Time Management & Organization','color': Colors.pink},
   ];
 
-  bool _hover = false;
 
   @override
   Widget build(BuildContext context) {

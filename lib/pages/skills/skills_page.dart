@@ -45,7 +45,9 @@ class _SkillsPageState extends State<SkillsPage> with SingleTickerProviderStateM
                         sizes: widget.sizes,
                       ),
                       16.verticalSpace,
-                      const RightSkills(isVertical: true)
+                      EntranceFader(
+                          delay: Duration(milliseconds: 1200),
+                          child: const RightSkills(isVertical: true))
                     ],
                   )
           ],
