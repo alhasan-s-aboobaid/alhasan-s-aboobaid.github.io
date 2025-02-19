@@ -49,7 +49,7 @@ class Sizes {
           homeSubtitle: 12,
           animatedCountSize: 30,
           animatedPlusSize: 20,
-          animatedTextSize: 12
+          animatedTextSize: 10
         );
       case ScreenType.tablet:
         return Sizes(
