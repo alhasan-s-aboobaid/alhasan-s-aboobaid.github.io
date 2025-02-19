@@ -43,8 +43,8 @@ class _RightSkillsState extends State<RightSkills> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Wrap(
-                runSpacing: widget.isVertical ? 10 : 20,
-                spacing: widget.isVertical ? 10 : 20,
+                runSpacing: widget.isVertical ? 13 : 20,
+                spacing: widget.isVertical ? 13 : 20,
                 children: [
                   ...otherSkills2.map((skill) {
                     return Container(
