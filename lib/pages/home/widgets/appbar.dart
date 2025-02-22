@@ -58,7 +58,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
           children: [
             _navItem("Home", 0),
             _navItem("Skills", 1),
-            _navItem("Projects", 2),
+            _navItem("Latest Projects", 2),
             _navItem("Contact", 3),
           ],
         ),
@@ -69,9 +69,13 @@ class _CustomAppBarState extends State<CustomAppBar> {
             _socialIcon(FontAwesomeIcons.facebook, onTap: () {
               launchUrlString("https://www.facebook.com/alhasan.aboobaid");
             },),
-            _socialIcon(FontAwesomeIcons.xTwitter),
-            _socialIcon(FontAwesomeIcons.linkedin),
-            _socialIcon(FontAwesomeIcons.github),
+            //_socialIcon(FontAwesomeIcons.xTwitter),
+            _socialIcon(FontAwesomeIcons.linkedin, onTap: () {
+              launchUrlString("www.linkedin.com/in/alhasan-abo-obaid-602501124");
+            },),
+            _socialIcon(FontAwesomeIcons.github, onTap: () {
+              launchUrlString("https://github.com/alhasan-s-aboobaid");
+            },),
           ],
         ),
       ],

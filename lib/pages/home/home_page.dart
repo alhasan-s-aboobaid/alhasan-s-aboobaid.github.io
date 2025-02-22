@@ -52,12 +52,12 @@ class _HomePageState extends State<HomePage> {
         ),
         child: PageView(
           controller: pageProvider.pageController,
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           children: [
             ScreenSizeUtil.getScreenType(context) == ScreenType.desktop ? ProfileSection(sizes: sizes): ProfileSectionMobile(sizes: sizes),
             SkillsPage(sizes: sizes),
             ProjectsSection(sizes: sizes, screenType: screenType),
-            ProjectsSection(sizes: sizes, screenType: screenType),
+            //ProjectsSection(sizes: sizes, screenType: screenType),
           ],
         ),
       ),

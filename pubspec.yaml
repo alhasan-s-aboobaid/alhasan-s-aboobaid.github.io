@@ -18,6 +18,7 @@ dependencies:
   flutter_screenutil: ^5.8.4
   provider: any
   url_launcher: any
+  carousel_slider:
 
 dev_dependencies:
   flutter_test:
@@ -35,6 +36,7 @@ flutter:
     - assets/icons/
     - assets/patterns/
     - assets/fonts/
+    - assets/projects/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

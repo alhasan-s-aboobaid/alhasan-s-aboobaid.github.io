@@ -1,26 +1,143 @@
-
+import 'package:alhasan_abo_obaid/core/theme_manager/base_theme/base_theme_extension.dart';
+import 'package:alhasan_abo_obaid/core/theme_manager/text_theme/text_theme_extension.dart';
 import 'package:alhasan_abo_obaid/core/utils/extensions.dart';
 import 'package:alhasan_abo_obaid/core/utils/screen_size_util.dart';
 import 'package:alhasan_abo_obaid/core/utils/sizes.dart';
+import 'package:alhasan_abo_obaid/core/widgets/hover_text.dart';
+import 'package:alhasan_abo_obaid/pages/home/widgets/fader.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
-class ProjectsSection extends StatelessWidget {
+class ProjectsSection extends StatefulWidget {
   final Sizes sizes;
   final ScreenType screenType;
-  const ProjectsSection({required this.sizes, required this.screenType});
+
+  const ProjectsSection({super.key, required this.sizes, required this.screenType});
+
+  @override
+  State<ProjectsSection> createState() => _ProjectsSectionState();
+}
+
+class _ProjectsSectionState extends State<ProjectsSection> {
+  @override
+  Widget build(BuildContext context) {
+    final List<Map<String, dynamic>> projects = [
+      {
+        'name': 'Maids.cc Client App',
+        'description': 'Get a full-time maid or a maid visa. Sign & pay online in 5 minutes.'
+            ' Avoid visits to medical centers & typists. Cancel anytime. Winner ministry award.\n\n'
+            'To apply for your maid\'s visa, Just upload your maid\'s passport copy & photo. We\'ll handle the entire visa process and deliver your maid\'s passport with her visa stamped.\n\n'
+            'To get a full-time maid today, view maids videos and hire your favorite. We\'ll Uber your new maid to you.',
+        'image': 'maidsapp1.png',
+        'link': 'https://play.google.com/store/apps/details?id=cc.maids.app&hl=en'
+      },
+      {
+        'name': 'ElectroMall',
+        'description': 'ElectroMall was the first one-of-its kind large format specialist retail store that catered to all multi-brand\ndigital gadgets and home electronic needs in Iraq.\n\nSince its inception, ElectroMall has almost become synonyms for all electronics needs, with its tech-savvy staff, product range, Staged presence and the will to help customers.',
+        'image': 'electroapp.png',
+        'link': 'https://play.google.com/store/apps/details?id=com.electromall.app&hl=en'
+      },
+      {
+        'name': 'kelshimall كلشي مول',
+        'description': 'The Kalshi Mall project is an online marketplace that allows users to sell anything in a smooth and easy way through the website or application on Android and iPhone.\n\nThe goal of the project is to create an easy-to-handle electronic interface, where the user can advertise his goods or the things to be sold and reach the largest possible segment that may be interested in buying it.',
+        'image': 'kelshimall.jpg',
+        'link': 'https://play.google.com/store/apps/details?id=com.keshi_mall.klshi_mall&hl=en'
+      },/*
+      {
+        'name': '',
+        'description': '',
+        'image': 'electroapp.png',
+        'link': 'https://play.google.com/store/apps/details?id=com.electromall.app&hl=en'
+      },*/
+    ];
+
+    return CarouselSlider(
+      options: CarouselOptions(
+          height: 900.0,
+          enlargeCenterPage: true,
+          enlargeStrategy: CenterPageEnlargeStrategy.scale,
+          pageSnapping: true,
+          scrollDirection: Axis.vertical,
+          animateToClosest: true),
+      items: projects.map((project) {
+        return Builder(
+          builder: (BuildContext context) {
+            return Container(
+                width: MediaQuery.of(context).size.width,
+                height: 900.h,
+                margin: const EdgeInsets.symmetric(horizontal: 80.0),
+                padding: 16.all,
+                decoration: BoxDecoration(
+                  borderRadius: 8.radiusAll,
+                  color: Colors.white.withOpacity(.05),
+                ),
+                child: Row(children: [
+                  Expanded(flex: 1,child: Container(
+                    /*decoration: BoxDecoration(
+                      border: Border.all(color: Colors.white),
+                      borderRadius: 8.radiusAll
+                    ),*/
+                    child: HoverScaleImage(path: "assets/projects/${project['image']}"),
+                  ),),
+                  16.horizontalSpace,
+                  Expanded(flex: 2,child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      16.verticalSpace,
+                      EntranceFader(child: GestureDetector(
+                          onTap: () {
+                            launchUrlString(project['link']);
+                          },
+                          child: HoverTextAnimation(text: project['name']))),
+                      24.verticalSpace,
+                      EntranceFader(
+                        delay: const Duration(milliseconds: 500),
+                        child: Text(project['description'], style: Theme.of(context).styles.bodyRegularMedium.copyWith(
+                          fontSize: widget.sizes.subtitleFontSize,
+                          color: Theme.of(context).themeColors.disabledButton
+                        ),),
+                      )
+                    ],
+                  ),)
+                ],));
+          },
+        );
+      }).toList(),
+    );
+  }
+}
+
+class HoverScaleImage extends StatefulWidget {
+  const HoverScaleImage({super.key, required this.path});
+
+  final String path;
+
+  @override
+  _HoverScaleImageState createState() => _HoverScaleImageState();
+}
+
+class _HoverScaleImageState extends State<HoverScaleImage> {
+  bool isHovered = false;
 
   @override
   Widget build(BuildContext context) {
-    bool isDesktop = screenType == ScreenType.desktop;
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        64.verticalSpace,
-        "assets/icons/under_construction.png".toAsset(w: 150, h: 150),
-        Text("Under Construction", style: TextStyle(fontSize: sizes.titleFontSize, fontWeight: FontWeight.bold, color: Colors.white)),
-      ],
+    return MouseRegion(
+      onEnter: (_) => setState(() => isHovered = true),
+      onExit: (_) => setState(() => isHovered = false),
+      child: AnimatedScale(
+        scale: isHovered ? 1.2 : 1.0,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeOut,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(20),
+          child: Image.asset(
+            widget.path,
+            fit: isHovered ? BoxFit.fill : BoxFit.cover,
+          ),
+        ),
+      ),
     );
   }
 }
