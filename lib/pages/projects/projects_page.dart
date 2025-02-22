@@ -35,16 +35,18 @@ class _ProjectsSectionState extends State<ProjectsSection> {
       },
       {
         'name': 'ElectroMall',
-        'description': 'ElectroMall was the first one-of-its kind large format specialist retail store that catered to all multi-brand\ndigital gadgets and home electronic needs in Iraq.\n\nSince its inception, ElectroMall has almost become synonyms for all electronics needs, with its tech-savvy staff, product range, Staged presence and the will to help customers.',
+        'description':
+            'ElectroMall was the first one-of-its kind large format specialist retail store that catered to all multi-brand\ndigital gadgets and home electronic needs in Iraq.\n\nSince its inception, ElectroMall has almost become synonyms for all electronics needs, with its tech-savvy staff, product range, Staged presence and the will to help customers.',
         'image': 'electroapp.png',
         'link': 'https://play.google.com/store/apps/details?id=com.electromall.app&hl=en'
       },
       {
         'name': 'kelshimall كلشي مول',
-        'description': 'The Kalshi Mall project is an online marketplace that allows users to sell anything in a smooth and easy way through the website or application on Android and iPhone.\n\nThe goal of the project is to create an easy-to-handle electronic interface, where the user can advertise his goods or the things to be sold and reach the largest possible segment that may be interested in buying it.',
+        'description':
+            'The Kalshi Mall project is an online marketplace that allows users to sell anything in a smooth and easy way through the website or application on Android and iPhone.\n\nThe goal of the project is to create an easy-to-handle electronic interface, where the user can advertise his goods or the things to be sold and reach the largest possible segment that may be interested in buying it.',
         'image': 'kelshimall.jpg',
         'link': 'https://play.google.com/store/apps/details?id=com.keshi_mall.klshi_mall&hl=en'
-      },/*
+      }, /*
       {
         'name': '',
         'description': '',
@@ -71,40 +73,64 @@ class _ProjectsSectionState extends State<ProjectsSection> {
                 padding: 16.all,
                 decoration: BoxDecoration(
                   borderRadius: 8.radiusAll,
-                  color: Colors.white.withOpacity(.05),
+                  color: widget.screenType == ScreenType.desktop
+                      ? Colors.white.withOpacity(.05)
+                      : Colors.black,
                 ),
-                child: Row(children: [
-                  Expanded(flex: 1,child: Container(
-                    /*decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      borderRadius: 8.radiusAll
-                    ),*/
-                    child: HoverScaleImage(path: "assets/projects/${project['image']}"),
-                  ),),
-                  16.horizontalSpace,
-                  Expanded(flex: 2,child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      16.verticalSpace,
-                      EntranceFader(child: GestureDetector(
-                          onTap: () {
-                            launchUrlString(project['link']);
-                          },
-                          child: HoverTextAnimation(text: project['name']))),
-                      24.verticalSpace,
-                      EntranceFader(
-                        delay: const Duration(milliseconds: 500),
-                        child: Text(project['description'], style: Theme.of(context).styles.bodyRegularMedium.copyWith(
-                          fontSize: widget.sizes.subtitleFontSize,
-                          color: Theme.of(context).themeColors.disabledButton
-                        ),),
+                child: widget.screenType == ScreenType.desktop
+                    ? Row(
+                        children: [
+                          _image(project),
+                          16.horizontalSpace,
+                          _descriptions(project, context)
+                        ],
                       )
-                    ],
-                  ),)
-                ],));
+                    : Column(
+                        children: [
+                          _image(project),
+                          16.verticalSpace,
+                          _descriptions(project, context)
+                        ],
+                      ));
           },
         );
       }).toList(),
+    );
+  }
+
+  Expanded _image(Map<String, dynamic> project) => Expanded(
+        flex: 1,
+        child: HoverScaleImage(path: "assets/projects/${project['image']}"),
+      );
+
+  Expanded _descriptions(Map<String, dynamic> project, BuildContext context) {
+    return Expanded(
+      flex: 2,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          16.verticalSpace,
+          EntranceFader(
+              child: GestureDetector(
+                  onTap: () {
+                    launchUrlString(project['link']);
+                  },
+                  child: HoverTextAnimation(text: project['name']))),
+          24.verticalSpace,
+          EntranceFader(
+            delay: const Duration(milliseconds: 500),
+            child: Text(
+              project['description'],
+              maxLines: widget.screenType == ScreenType.desktop ? null : 10,
+              style: Theme.of(context).styles.bodyRegularMedium.copyWith(
+                  fontSize: widget.sizes.subtitleFontSize,
+                  overflow: widget.screenType == ScreenType.desktop ? null : TextOverflow.ellipsis,
+
+                  color: Theme.of(context).themeColors.disabledButton),
+            ),
+          )
+        ],
+      ),
     );
   }
 }

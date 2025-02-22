@@ -1,4 +1,5 @@
 import 'package:alhasan_abo_obaid/core/providers/page_provider.dart';
+import 'package:alhasan_abo_obaid/core/utils/extensions.dart';
 import 'package:alhasan_abo_obaid/core/utils/icon_manager.dart';
 import 'package:alhasan_abo_obaid/core/utils/screen_size_util.dart';
 import 'package:alhasan_abo_obaid/core/utils/sizes.dart';
@@ -9,6 +10,7 @@ import 'package:alhasan_abo_obaid/pages/profile/profile_page_mobile.dart';
 import 'package:alhasan_abo_obaid/pages/projects/projects_page.dart';
 import 'package:alhasan_abo_obaid/pages/skills/skills_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -57,6 +59,14 @@ class _HomePageState extends State<HomePage> {
             ScreenSizeUtil.getScreenType(context) == ScreenType.desktop ? ProfileSection(sizes: sizes): ProfileSectionMobile(sizes: sizes),
             SkillsPage(sizes: sizes),
             ProjectsSection(sizes: sizes, screenType: screenType),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                64.verticalSpace,
+                "assets/icons/under_construction.png".toAsset(w: 150, h: 150),
+                Text("Under Construction", style: TextStyle(fontSize: sizes.titleFontSize, fontWeight: FontWeight.bold, color: Colors.white)),
+              ],
+            )
             //ProjectsSection(sizes: sizes, screenType: screenType),
           ],
         ),
