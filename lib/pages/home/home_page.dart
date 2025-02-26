@@ -56,7 +56,7 @@ class _HomePageState extends State<HomePage> {
           controller: pageProvider.pageController,
           physics: const NeverScrollableScrollPhysics(),
           children: [
-            ScreenSizeUtil.getScreenType(context) == ScreenType.desktop ? ProfileSection(sizes: sizes): ProfileSectionMobile(sizes: sizes),
+            ProfileSection(sizes: sizes), //: ProfileSectionMobile(sizes: sizes),
             SkillsPage(sizes: sizes),
             ProjectsSection(sizes: sizes, screenType: screenType),
             Column(

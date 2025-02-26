@@ -28,98 +28,76 @@ class ProfileSection extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          Padding(
-            padding: EdgeInsets.only(left: sizes.sectionPadding, right: sizes.sectionPadding, top: sizes.sectionPadding, bottom: 16),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Stack(
-                    children: [
-                      const AnimatedBubbles(type: "stroke", size: "large",),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          EntranceFader(
-                            duration: const Duration(milliseconds: 400),
-                            child: Text("👋 Hi there, I'm Alhasan",
-                                style: Theme.of(context).styles.bodyRegularLarge.copyWith(
-                                    color: Theme.of(context).themeColors.textBody, fontSize: sizes.homeGreetingTitle)),
-                          ),
-                          8.verticalSpace,
-                          EntranceFader(
-                            duration: Duration(milliseconds: 600),
-                            child: Text("Innovating Digital Interfaces",
-                                style: Theme.of(context).styles.headingLarge.copyWith(
-                                    fontSize: sizes.homeTitle1,
-                                    color: Theme.of(context).themeColors.textBody)),
-                          ),
-                          EntranceFader(
-                            duration: Duration(milliseconds: 800),
-                            child: Text("For a Better Tomorrow",
-                                style: Theme.of(context).styles.headingLarge.copyWith(
-                                    fontSize: sizes.homeTitle1,
-                                    color: Theme.of(context).themeColors.primaryColor)),
-                          ),
-                          4.verticalSpace,
-                          EntranceFader(
-                            duration: Duration(milliseconds: 1000),
-                            child: Text(
-                                "I help turn your vision into reality by designing and developing digital products that put the user at the heart of the experience. with more than 8 years of experience.",
-                                style: Theme.of(context).styles.bodyRegularMedium.copyWith(
-                                    fontSize: sizes.homeSubtitle,
-                                    color: Theme.of(context).themeColors.disabledButton)),
-                          ),
-                          32.verticalSpace,
-                          EntranceFader(
-                            duration: Duration(milliseconds: 1400),
-                            child: Row(
-                              children: [
-                                CustomButton(
-                                  title: "Download CV",
-                                  onPressed: () {
-                                    launchUrlString(Constants.cvUrl);
-                                  },
-                                )
-                              ],
-                            ),
-                          ),
-                          48.verticalSpace,
+          Stack(
+            children: [
 
-                        ],
-                      ),
-                    ],
+              Align(
+                alignment: Alignment.centerRight,
+                child: Container(
+                  margin: 16.all,
+                  child: CircleAvatar(
+                    radius: sizes.profileImageSize * .4,
+                    foregroundImage:
+                    const AssetImage(IconManager.profileImage),
+                    child: const AnimatedBubbles(type: "", size: "large",), // Replace with your image
                   ),
                 ),
-                Expanded(
-                    child: SizedBox(
-                      //color: Colors.red,
-                      height: MediaQuery.of(context).size.height - sizes.sectionPadding * 2 - sizes.appBarHeight,
-                      child: Stack(
-                        children: [
-
-                          Align(
-                            alignment: Alignment.topCenter,
-                            child: CircleAvatar(
-                              radius: sizes.profileImageSize / 2,
-                              foregroundImage:
-                                  const AssetImage(IconManager.profileImage),
-                              child: const AnimatedBubbles(type: "", size: "large",), // Replace with your image
-                            ),
-                          ),
+              ),
 
 
-                        ],
-                      ),
-                    ))
+            ],
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: sizes.sectionPadding, right: sizes.sectionPadding, top: 8, bottom: 16),
+            child: Stack(
+              children: [
+                const AnimatedBubbles(type: "stroke", size: "large",),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    EntranceFader(
+                      duration: const Duration(milliseconds: 400),
+                      child: Text("👋 Hi there, I'm Alhasan",
+                          style: Theme.of(context).styles.bodyRegularLarge.copyWith(
+                              color: Theme.of(context).themeColors.textBody, fontSize: sizes.homeGreetingTitle)),
+                    ),
+                    8.verticalSpace,
+                    EntranceFader(
+                      duration: Duration(milliseconds: 600),
+                      child: Text("Innovating Digital Interfaces",
+                          style: Theme.of(context).styles.headingLarge.copyWith(
+                              fontSize: sizes.homeTitle1,
+                              color: Theme.of(context).themeColors.textBody)),
+                    ),
+                    EntranceFader(
+                      duration: Duration(milliseconds: 800),
+                      child: Text("For a Better Tomorrow",
+                          style: Theme.of(context).styles.headingLarge.copyWith(
+                              fontSize: sizes.homeTitle1,
+                              color: Theme.of(context).themeColors.primaryColor)),
+                    ),
+                    4.verticalSpace,
+                    EntranceFader(
+                      duration: const Duration(milliseconds: 1000),
+                      child: Text(
+                          "I help turn your vision into reality by designing and developing digital products that put the user at the heart of the experience.\nwith more than 8 years of experience.",
+                          style: Theme.of(context).styles.bodyRegularMedium.copyWith(
+                              fontSize: sizes.homeSubtitle,
+                              color: Theme.of(context).themeColors.disabledButton)),
+                    ),
+
+
+                  ],
+                ),
               ],
             ),
           ),
-          //Spacer(),
+          160.verticalSpace,
           Container(
             width: MediaQuery.of(context).size.width,
             padding: EdgeInsets.symmetric(
-                horizontal: 32.w, vertical: 8.h
+                horizontal: 16.w, vertical: 8.h
             ),
             color: Colors.black87.withOpacity(.7),
             child: Column(
@@ -159,6 +137,8 @@ class ProfileSection extends StatelessWidget {
                   Image.asset(IconManager.shamra, width: 32.w, height: 32.h, color: Theme.of(context).themeColors.primaryLight,),
                   8.horizontalSpace,
                   Image.asset(IconManager.kelshimall, width: 32.w, height: 32.h, color: Theme.of(context).themeColors.primaryLight,),
+                  8.horizontalSpace,
+                  Image.asset(IconManager.scit, width: 32.w, height: 32.h, color: Theme.of(context).themeColors.primaryLight,),
                   8.horizontalSpace,
 
                 ],),
