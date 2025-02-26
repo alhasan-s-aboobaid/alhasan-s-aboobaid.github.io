@@ -1,6 +1,8 @@
 import 'package:alhasan_abo_obaid/core/theme_manager/base_theme/base_theme_extension.dart';
 import 'package:alhasan_abo_obaid/core/theme_manager/text_theme/text_theme_extension.dart';
 import 'package:alhasan_abo_obaid/core/utils/extensions.dart';
+import 'package:alhasan_abo_obaid/core/utils/screen_size_util.dart';
+import 'package:alhasan_abo_obaid/core/utils/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -70,7 +72,7 @@ class _CustomButtonState extends State<CustomButton> {
                 borderRadius: 10.radiusAll,
             color: widget.onPressed == null ? Theme.of(context).themeColors.disabledButton : widget.backgroundColor ?? Theme.of(context).themeColors.primaryColor,
           ),
-          child: Text(widget.title, style: Theme.of(context).styles.bodyRegularMedium.copyWith(fontSize: 18.sp, color: Theme.of(context).themeColors.white),
+          child: Text(widget.title, style: Theme.of(context).styles.bodyRegularMedium.copyWith(fontSize: Sizes.getSizes(ScreenSizeUtil.getScreenType(context)).buttonFontSize, color: Theme.of(context).themeColors.white),
           )),
         ),
       ),

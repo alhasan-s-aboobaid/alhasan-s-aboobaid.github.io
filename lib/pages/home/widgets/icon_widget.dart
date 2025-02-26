@@ -1,7 +1,9 @@
 
 import 'package:alhasan_abo_obaid/core/theme_manager/base_theme/base_theme_extension.dart';
+import 'package:alhasan_abo_obaid/core/theme_manager/text_theme/text_theme_styles.dart';
 import 'package:alhasan_abo_obaid/core/utils/extensions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class IconWidget extends StatelessWidget {
 
@@ -14,14 +16,14 @@ class IconWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 48,
-      height: 48,
+      width: 48.w,
+      height: 48.h,
       padding: 6.all,
-      decoration: BoxDecoration(
+      /*decoration: BoxDecoration(
           color: Theme.of(context).themeColors.hintColor.withOpacity(.3),
           borderRadius: 8.radiusAll
-      ),
-      child: iconPath.toAsset(w: 32, h: 32, fit: BoxFit.cover),
+      ),*/
+      child: iconPath.toAsset(w: 32.w, h: 32.h, fit: BoxFit.contain),
     );
   }
 }

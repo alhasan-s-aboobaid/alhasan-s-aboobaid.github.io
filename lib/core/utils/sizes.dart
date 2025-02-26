@@ -42,7 +42,7 @@ class Sizes {
           profileImageSize: 100,
           titleFontSize: 18,
           subtitleFontSize: 14,
-          buttonFontSize: 12,
+          buttonFontSize: 14,
           sectionPadding: 20,
             homeGreetingTitle: 16,
           homeTitle1: 20,

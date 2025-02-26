@@ -115,18 +115,11 @@ class _ProjectsSectionState extends State<ProjectsSection> {
         children: [
           16.verticalSpace,
           EntranceFader(
-              child: Row(
-                children: [
-                  GestureDetector(
-                      onTap: () {
-                        launchUrlString(project['link']);
-                      },
-                      child: HoverTextAnimation(text: project['name'])),
-
-                  Spacer(),
-                  project['companyLogo'].toString().toAsset(w: 56.w, h: 56.h,)
-                ],
-              )),
+              child: GestureDetector(
+                  onTap: () {
+                    launchUrlString(project['link']);
+                  },
+                  child: HoverTextAnimation(text: project['name']))),
           24.verticalSpace,
           EntranceFader(
             delay: const Duration(milliseconds: 500),
@@ -141,6 +134,8 @@ class _ProjectsSectionState extends State<ProjectsSection> {
             ),
           ),
 
+          Spacer(),
+          project['companyLogo'].toString().toAsset(w: 56.w, h: 56.h,)
         ],
       ),
     );

@@ -1,8 +1,11 @@
 import 'package:alhasan_abo_obaid/core/providers/page_provider.dart';
 import 'package:alhasan_abo_obaid/core/theme_manager/base_theme/base_theme_extension.dart';
 import 'package:alhasan_abo_obaid/core/theme_manager/text_theme/text_theme_extension.dart';
+import 'package:alhasan_abo_obaid/core/utils/constants.dart';
 import 'package:alhasan_abo_obaid/core/utils/screen_size_util.dart';
 import 'package:alhasan_abo_obaid/core/utils/sizes.dart';
+import 'package:alhasan_abo_obaid/core/widgets/custom_button.dart';
+import 'package:alhasan_abo_obaid/pages/home/widgets/fader.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -63,20 +66,36 @@ class _CustomAppBarState extends State<CustomAppBar> {
           ],
         ),
 
+        const Spacer(),
         if(ScreenSizeUtil.getScreenType(context) == ScreenType.desktop)
-        Row(
-          children: [
-            _socialIcon(FontAwesomeIcons.facebook, onTap: () {
-              launchUrlString("https://www.facebook.com/alhasan.aboobaid");
-            },),
-            //_socialIcon(FontAwesomeIcons.xTwitter),
-            _socialIcon(FontAwesomeIcons.linkedin, onTap: () {
-              launchUrlString("www.linkedin.com/in/alhasan-abo-obaid-602501124");
-            },),
-            _socialIcon(FontAwesomeIcons.github, onTap: () {
-              launchUrlString("https://github.com/alhasan-s-aboobaid");
-            },),
-          ],
+        EntranceFader(
+          offset: const Offset(50, 0),
+          child: CustomButton(
+            title: "Download CV",
+            onPressed: () {
+              launchUrlString(Constants.cvUrl);
+            },
+          ),
+        ),
+        4.horizontalSpace,
+        if(ScreenSizeUtil.getScreenType(context) == ScreenType.desktop)
+          EntranceFader(
+            offset: const Offset(50, 0),
+            delay: const Duration(milliseconds: 500),
+            child: Row(
+            children: [
+              _socialIcon(FontAwesomeIcons.facebook, onTap: () {
+                launchUrlString("https://www.facebook.com/alhasan.aboobaid");
+              },),
+              //_socialIcon(FontAwesomeIcons.xTwitter),
+              _socialIcon(FontAwesomeIcons.linkedin, onTap: () {
+                launchUrlString("www.linkedin.com/in/alhasan-abo-obaid-602501124");
+              },),
+              _socialIcon(FontAwesomeIcons.github, onTap: () {
+                launchUrlString("https://github.com/alhasan-s-aboobaid");
+              },),
+            ],
+          ),
         ),
       ],
     );

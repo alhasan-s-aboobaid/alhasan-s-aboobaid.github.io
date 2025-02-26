@@ -7,6 +7,7 @@ import 'package:alhasan_abo_obaid/core/theme_manager/text_theme/text_theme_exten
 import 'package:alhasan_abo_obaid/core/utils/constants.dart';
 import 'package:alhasan_abo_obaid/core/utils/extensions.dart';
 import 'package:alhasan_abo_obaid/core/utils/icon_manager.dart';
+import 'package:alhasan_abo_obaid/core/utils/screen_size_util.dart';
 import 'package:alhasan_abo_obaid/core/utils/sizes.dart';
 import 'package:alhasan_abo_obaid/core/widgets/animated_bubbles.dart';
 import 'package:alhasan_abo_obaid/core/widgets/animated_text_count.dart';
@@ -86,7 +87,17 @@ class ProfileSection extends StatelessWidget {
                               fontSize: sizes.homeSubtitle,
                               color: Theme.of(context).themeColors.disabledButton)),
                     ),
-
+                    16.verticalSpace,
+                    if(ScreenSizeUtil.getScreenType(context) != ScreenType.desktop)
+                      EntranceFader(
+                        offset: Offset(50, 0),
+                        child: CustomButton(
+                          title: "Download CV",
+                          onPressed: () {
+                            launchUrlString(Constants.cvUrl);
+                          },
+                        ),
+                      ),
 
                   ],
                 ),
@@ -115,7 +126,7 @@ class ProfileSection extends StatelessWidget {
                     8.horizontalSpace,
 
                   ],),
-                16.verticalSpace,
+                32.verticalSpace,
                 Text("Companies I worked with", style: Theme.of(context).styles.headingLarge.copyWith(
                   color: Colors.white70
                 ),),
@@ -140,11 +151,10 @@ class ProfileSection extends StatelessWidget {
                   8.horizontalSpace,
                   Image.asset(IconManager.scit, width: 32.w, height: 32.h, color: Theme.of(context).themeColors.primaryLight,),
                   8.horizontalSpace,
-
                 ],),
-                32.verticalSpace,
+                24.verticalSpace,
                 Divider(color: Colors.grey[800],),
-                32.verticalSpace,
+                24.verticalSpace,
                 EntranceFader(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
