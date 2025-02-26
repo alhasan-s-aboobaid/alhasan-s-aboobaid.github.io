@@ -131,9 +131,11 @@ class ProfileSection extends StatelessWidget {
                   color: Colors.white70
                 ),),
                 4.verticalSpace,
-                Text("I have implemented and published tens of apps with many agents and customers", style: Theme.of(context).styles.bodyRegularLarge.copyWith(
-                  color: Theme.of(context).themeColors.disabledButton
-                ),),
+                Text("I have implemented and published tens of apps with many agents and customers",
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).styles.bodyRegularMedium.copyWith(
+                      fontSize: sizes.homeSubtitle,
+                      color: Theme.of(context).themeColors.disabledButton),),
                 24.verticalSpace,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
