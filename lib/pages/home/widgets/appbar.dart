@@ -127,7 +127,24 @@ class _CustomAppBarState extends State<CustomAppBar> {
         },
         child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: _buildAnimatedText(title, pageProvider, index)),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                _buildAnimatedText(title, pageProvider, index),
+               /* if(pageProvider.currentIndex == index)
+                  2.verticalSpace,
+                if(pageProvider.currentIndex == index)
+                  Container(
+                  width: 4,
+                  height: 4,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Theme.of(context).themeColors.primaryLight
+                  ),
+                )*/
+              ],
+            )),
       ),
     );
   }

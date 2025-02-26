@@ -134,8 +134,13 @@ class _ProjectsSectionState extends State<ProjectsSection> {
             ),
           ),
 
-          Spacer(),
-          project['companyLogo'].toString().toAsset(w: 56.w, h: 56.h,)
+          const Spacer(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              project['companyLogo'].toString().toAsset(w: 56.w, h: 56.h,),
+            ],
+          )
         ],
       ),
     );
