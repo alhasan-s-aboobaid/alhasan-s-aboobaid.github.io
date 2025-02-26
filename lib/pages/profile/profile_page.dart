@@ -26,11 +26,11 @@ class ProfileSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Padding(
-        padding: sizes.sectionPadding.all,
-        child: Column(
-          children: [
-            Row(
+      child: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.only(left: sizes.sectionPadding, right: sizes.sectionPadding, top: sizes.sectionPadding, bottom: 16),
+            child: Row(
               children: [
                 Expanded(
                   child: Stack(
@@ -86,30 +86,15 @@ class ProfileSection extends StatelessWidget {
                           ),
                           48.verticalSpace,
 
-                          EntranceFader(
-                            offset: Offset(100, 0),
-                            child: Row(children: [
-                              const IconWidget(iconPath: IconManager.figma),
-                              8.horizontalSpace,
-                              const IconWidget(iconPath: IconManager.dart),
-                              8.horizontalSpace,
-                              const IconWidget(iconPath: IconManager.flutter),
-                              8.horizontalSpace,
-                              const IconWidget(iconPath: IconManager.firebase),
-                              8.horizontalSpace,
-                              const IconWidget(iconPath: IconManager.springBoot),
-                              8.horizontalSpace,
-                            ],),
-                          )
                         ],
                       ),
                     ],
                   ),
                 ),
                 Expanded(
-                    child: Container(
+                    child: SizedBox(
                       //color: Colors.red,
-                      height: MediaQuery.of(context).size.height - sizes.sectionPadding *2 - sizes.appBarHeight,
+                      height: MediaQuery.of(context).size.height - sizes.sectionPadding * 2 - sizes.appBarHeight,
                       child: Stack(
                         children: [
 
@@ -123,30 +108,85 @@ class ProfileSection extends StatelessWidget {
                             ),
                           ),
 
-                          Positioned(
-                            //alignment: Alignment.bottomCenter,
-                            bottom: 16,
-                            left: 0,
-                            right: 0,
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const AnimatedText(count: 8, label: "Years of\nExperience"),
-                              8.horizontalSpace,
-                                const AnimatedText(count: 15, label: "Projects\nCompleted"),
-                              8.horizontalSpace,
-
-                            ],),
-                          )
 
                         ],
                       ),
                     ))
               ],
             ),
-          ],
-        ),
+          ),
+          //Spacer(),
+          Container(
+            width: MediaQuery.of(context).size.width,
+            padding: EdgeInsets.symmetric(
+                horizontal: 32.w, vertical: 8.h
+            ),
+            color: Colors.black87.withOpacity(.7),
+            child: Column(
+              children: [
+                8.verticalSpace,
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const AnimatedText(count: 8, label: "Years of\nExperience"),
+                    8.horizontalSpace,
+                    const AnimatedText(count: 15, label: "Projects\nCompleted"),
+                    8.horizontalSpace,
+                    const AnimatedText(count: 100, label: "Success\nRate", hasPercentSign: true, hasPlusSign: false,),
+                    8.horizontalSpace,
+
+                  ],),
+                16.verticalSpace,
+                Text("Companies I worked with", style: Theme.of(context).styles.headingLarge.copyWith(
+                  color: Colors.white70
+                ),),
+                4.verticalSpace,
+                Text("I have implemented and published tens of apps with many agents and customers", style: Theme.of(context).styles.bodyRegularLarge.copyWith(
+                  color: Theme.of(context).themeColors.disabledButton
+                ),),
+                24.verticalSpace,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                  Image.asset(IconManager.maidsccLogo, width: 32.w, height: 32.h, color: Theme.of(context).themeColors.primaryLight,),
+                  8.horizontalSpace,
+                  Image.asset(IconManager.electromall, width: 32.w, height: 32.h, color: Theme.of(context).themeColors.primaryLight,),
+                  8.horizontalSpace,
+                  Image.asset(IconManager.datum, width: 32.w, height: 32.h, color: Theme.of(context).themeColors.primaryLight,),
+                  8.horizontalSpace,
+                  Image.asset(IconManager.shamra, width: 32.w, height: 32.h, color: Theme.of(context).themeColors.primaryLight,),
+                  8.horizontalSpace,
+                  Image.asset(IconManager.kelshimall, width: 32.w, height: 32.h, color: Theme.of(context).themeColors.primaryLight,),
+                  8.horizontalSpace,
+
+                ],),
+                32.verticalSpace,
+                Divider(color: Colors.grey[800],),
+                32.verticalSpace,
+                EntranceFader(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                    const IconWidget(iconPath: IconManager.figma),
+                    8.horizontalSpace,
+                    const IconWidget(iconPath: IconManager.dart),
+                    8.horizontalSpace,
+                    const IconWidget(iconPath: IconManager.flutter),
+                    8.horizontalSpace,
+                    const IconWidget(iconPath: IconManager.firebase),
+                    8.horizontalSpace,
+                    const IconWidget(iconPath: IconManager.springBoot),
+                    8.horizontalSpace,
+                  ],),
+                ),
+                8.verticalSpace,
+              ],
+            ),
+          )
+        ],
       ),
     );
   }

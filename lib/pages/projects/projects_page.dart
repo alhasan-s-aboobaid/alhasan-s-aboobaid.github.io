@@ -1,6 +1,7 @@
 import 'package:alhasan_abo_obaid/core/theme_manager/base_theme/base_theme_extension.dart';
 import 'package:alhasan_abo_obaid/core/theme_manager/text_theme/text_theme_extension.dart';
 import 'package:alhasan_abo_obaid/core/utils/extensions.dart';
+import 'package:alhasan_abo_obaid/core/utils/icon_manager.dart';
 import 'package:alhasan_abo_obaid/core/utils/screen_size_util.dart';
 import 'package:alhasan_abo_obaid/core/utils/sizes.dart';
 import 'package:alhasan_abo_obaid/core/widgets/hover_text.dart';
@@ -31,6 +32,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
             'To apply for your maid\'s visa, Just upload your maid\'s passport copy & photo. We\'ll handle the entire visa process and deliver your maid\'s passport with her visa stamped.\n\n'
             'To get a full-time maid today, view maids videos and hire your favorite. We\'ll Uber your new maid to you.',
         'image': 'maidsapp1.png',
+        'companyLogo':IconManager.maidsccLogo,
         'link': 'https://play.google.com/store/apps/details?id=cc.maids.app&hl=en'
       },
       {
@@ -38,10 +40,12 @@ class _ProjectsSectionState extends State<ProjectsSection> {
         'description':
             'ElectroMall was the first one-of-its kind large format specialist retail store that catered to all multi-brand\ndigital gadgets and home electronic needs in Iraq.\n\nSince its inception, ElectroMall has almost become synonyms for all electronics needs, with its tech-savvy staff, product range, Staged presence and the will to help customers.',
         'image': 'electroapp.png',
+        'companyLogo':IconManager.electromall,
         'link': 'https://play.google.com/store/apps/details?id=com.electromall.app&hl=en'
       },
       {
         'name': 'kelshimall كلشي مول',
+        'companyLogo':IconManager.kelshimall,
         'description':
             'The Kalshi Mall project is an online marketplace that allows users to sell anything in a smooth and easy way through the website or application on Android and iPhone.\n\nThe goal of the project is to create an easy-to-handle electronic interface, where the user can advertise his goods or the things to be sold and reach the largest possible segment that may be interested in buying it.',
         'image': 'kelshimall.jpg',
@@ -111,11 +115,18 @@ class _ProjectsSectionState extends State<ProjectsSection> {
         children: [
           16.verticalSpace,
           EntranceFader(
-              child: GestureDetector(
-                  onTap: () {
-                    launchUrlString(project['link']);
-                  },
-                  child: HoverTextAnimation(text: project['name']))),
+              child: Row(
+                children: [
+                  GestureDetector(
+                      onTap: () {
+                        launchUrlString(project['link']);
+                      },
+                      child: HoverTextAnimation(text: project['name'])),
+
+                  Spacer(),
+                  project['companyLogo'].toString().toAsset(w: 56.w, h: 56.h,)
+                ],
+              )),
           24.verticalSpace,
           EntranceFader(
             delay: const Duration(milliseconds: 500),
@@ -128,7 +139,8 @@ class _ProjectsSectionState extends State<ProjectsSection> {
 
                   color: Theme.of(context).themeColors.disabledButton),
             ),
-          )
+          ),
+
         ],
       ),
     );

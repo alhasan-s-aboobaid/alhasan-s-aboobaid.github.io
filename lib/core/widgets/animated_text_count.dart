@@ -9,10 +9,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AnimatedText extends StatefulWidget {
-  const AnimatedText({super.key, required this.count, required this.label});
+  const AnimatedText({super.key, required this.count, required this.label, this.hasPlusSign = true, this.hasPercentSign = false});
 
   final int count;
   final String label;
+  final bool hasPlusSign;
+  final bool hasPercentSign;
 
   @override
   State<AnimatedText> createState() => _AnimatedTextState();
@@ -32,11 +34,13 @@ class _AnimatedTextState extends State<AnimatedText> with SingleTickerProviderSt
       builder: (context, value, child) {
         return Row(
           children: [
+            if(widget.hasPlusSign)
             Text("+", style: Theme.of(context).styles.bodyRegularLarge.copyWith(
                 color: Theme.of(context).themeColors.primaryLight, fontSize: sizes.animatedPlusSize
             ),),
+            if(widget.hasPlusSign)
             2.horizontalSpace,
-            Text(value.toString(), style: Theme.of(context).styles.headingSmall.copyWith(
+            Text("$value${widget.hasPercentSign ? "%" : ""}", style: Theme.of(context).styles.headingSmall.copyWith(
                 color: Colors.white, fontSize: sizes.animatedCountSize
             ),),
             2.horizontalSpace,
