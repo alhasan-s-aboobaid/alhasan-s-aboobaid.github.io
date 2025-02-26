@@ -62,7 +62,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
             _navItem("Home", 0),
             _navItem("Skills", 1),
             _navItem("Latest Projects", 2),
-            _navItem("Contact", 3),
+            //_navItem("Contact", 3),
           ],
         ),
 
