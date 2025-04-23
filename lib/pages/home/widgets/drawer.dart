@@ -34,7 +34,8 @@ class _CustomDrawerState extends State<CustomDrawer> {
           _drawerItem("Home", 0),
           _drawerItem("Skills", 1),
           _drawerItem("Projects", 2),
-          _drawerItem("Contact", 3),
+          _drawerItem("Latest Articles", 3),
+          _drawerItem("Contact", 4),
         ],
       ),
     );

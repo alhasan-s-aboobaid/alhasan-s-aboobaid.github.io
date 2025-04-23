@@ -19,6 +19,9 @@ dependencies:
   provider: any
   url_launcher: any
   carousel_slider:
+  http: ^0.13.4
+  cached_network_image: ^3.2.3
+  xml: ^6.3.0
 
 dev_dependencies:
   flutter_test:

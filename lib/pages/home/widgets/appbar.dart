@@ -1,4 +1,4 @@
-import 'package:alhasan_abo_obaid/core/providers/page_provider.dart';
+  import 'package:alhasan_abo_obaid/core/providers/page_provider.dart';
 import 'package:alhasan_abo_obaid/core/theme_manager/base_theme/base_theme_extension.dart';
 import 'package:alhasan_abo_obaid/core/theme_manager/text_theme/text_theme_extension.dart';
 import 'package:alhasan_abo_obaid/core/utils/constants.dart';
@@ -62,7 +62,8 @@ class _CustomAppBarState extends State<CustomAppBar> {
             _navItem("Home", 0),
             _navItem("Skills", 1),
             _navItem("Latest Projects", 2),
-            //_navItem("Contact", 3),
+            _navItem("Latest Articles", 3),
+            //_navItem("Contact", 4),
           ],
         ),
 
