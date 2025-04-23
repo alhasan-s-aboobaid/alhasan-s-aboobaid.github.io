@@ -21,7 +21,17 @@ dependencies:
   carousel_slider:
   http: ^0.13.4
   cached_network_image: ^3.2.3
+
+  flutter_native_splash: ^2.3.10
   xml: ^6.3.0
+
+flutter_native_splash:
+  color: "#FFFFFF"  # Background color
+  image: assets/icons/loading.gif  # Splash GIF image
+  fullscreen: true
+  android: false  # Disable for mobile, only for web
+  ios: false
+  web: true  # Enable for Flutter Web
 
 dev_dependencies:
   flutter_test:
