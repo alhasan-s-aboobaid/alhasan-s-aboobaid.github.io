@@ -6,6 +6,7 @@ import 'package:alhasan_abo_obaid/core/utils/sizes.dart';
 import 'package:alhasan_abo_obaid/pages/articles/articles_page.dart';
 import 'package:alhasan_abo_obaid/pages/home/widgets/appbar.dart';
 import 'package:alhasan_abo_obaid/pages/home/widgets/drawer.dart';
+import 'package:alhasan_abo_obaid/pages/profile/enhanced_profile_page.dart';
 import 'package:alhasan_abo_obaid/pages/profile/profile_page.dart';
 import 'package:alhasan_abo_obaid/pages/profile/profile_page_mobile.dart';
 import 'package:alhasan_abo_obaid/pages/projects/projects_page.dart';
@@ -57,7 +58,8 @@ class _HomePageState extends State<HomePage> {
           controller: pageProvider.pageController,
           physics: const NeverScrollableScrollPhysics(),
           children: [
-            ProfileSection(sizes: sizes), //: ProfileSectionMobile(sizes: sizes),
+            ProfileSection(sizes: sizes),
+           // EnhancedProfileSection(sizes: sizes),
             SkillsPage(sizes: sizes),
             ProjectsSection(sizes: sizes, screenType: screenType),
             ArticlesPage(sizes: sizes, screenType: screenType),

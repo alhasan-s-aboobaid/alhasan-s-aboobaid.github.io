@@ -45,8 +45,8 @@ class _ArticlesPageState extends State<ArticlesPage> {
 
     return Container(
       padding: EdgeInsets.symmetric(
-        horizontal: widget.sizes.sectionPadding,
-        vertical: 32
+        horizontal: widget.screenType == ScreenType.mobile ? widget.sizes.sectionPadding * 0.8 : widget.sizes.sectionPadding,
+        vertical: widget.screenType == ScreenType.mobile ? 24 : 32
       ),
       child: SingleChildScrollView(
         child: Column(
@@ -57,23 +57,23 @@ class _ArticlesPageState extends State<ArticlesPage> {
               child: Text(
                 "Latest Articles",
                 style: Theme.of(context).styles.headingLarge.copyWith(
-                  fontSize: widget.sizes.titleFontSize * 1.5,
+                  fontSize: widget.screenType == ScreenType.mobile ? widget.sizes.titleFontSize * 1.2 : widget.sizes.titleFontSize * 1.5,
                   color: Theme.of(context).themeColors.primaryColor,
                 ),
               ),
             ),
-            16.verticalSpace,
+            (widget.screenType == ScreenType.mobile ? 12 : 16).verticalSpace,
             EntranceFader(
               duration: const Duration(milliseconds: 600),
               child: Text(
                 "Sharing knowledge and insights about Flutter, Dart, and mobile development",
                 style: Theme.of(context).styles.bodyRegularMedium.copyWith(
-                  fontSize: widget.sizes.subtitleFontSize,
+                  fontSize: widget.screenType == ScreenType.mobile ? widget.sizes.subtitleFontSize * 0.9 : widget.sizes.subtitleFontSize,
                   color: Theme.of(context).themeColors.disabledButton,
                 ),
               ),
             ),
-            32.verticalSpace,
+            (widget.screenType == ScreenType.mobile ? 24 : 32).verticalSpace,
             _buildArticlesList(articles),
           ],
         ),
@@ -111,7 +111,7 @@ class _ArticlesPageState extends State<ArticlesPage> {
       itemCount: articles.length,
       itemBuilder: (context, index) {
         return Padding(
-          padding: const EdgeInsets.only(bottom: 16.0),
+          padding: EdgeInsets.only(bottom: 24.0),
           child: _buildArticleCard(articles[index]),
         );
       },
@@ -129,6 +129,7 @@ class _ArticlesPageState extends State<ArticlesPage> {
         platformIcon: article['platformIcon'],
         date: article['date'],
         image: article['image'],
+        isMobile: widget.screenType == ScreenType.mobile,
       ),
     );
   }
@@ -142,6 +143,7 @@ class _ArticleCard extends StatefulWidget {
   final IconData platformIcon;
   final String date;
   final String image;
+  final bool isMobile;
 
   const _ArticleCard({
     required this.title,
@@ -151,6 +153,7 @@ class _ArticleCard extends StatefulWidget {
     required this.platformIcon,
     required this.date,
     required this.image,
+    this.isMobile = false,
   });
 
   @override
@@ -172,12 +175,12 @@ class _ArticleCardState extends State<_ArticleCard> {
         },
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 300),
-          padding: 16.all,
+          padding: (widget.isMobile ? 12 : 16).all,
           decoration: BoxDecoration(
             color: isHovered
                 ? Colors.white.withOpacity(0.1)
                 : Colors.white.withOpacity(0.05),
-            borderRadius: 12.radiusAll,
+            borderRadius: (widget.isMobile ? 10 : 12).radiusAll,
             boxShadow: isHovered
                 ? [
                     BoxShadow(
@@ -196,14 +199,14 @@ class _ArticleCardState extends State<_ArticleCard> {
                   Icon(
                     widget.platformIcon,
                     color: Theme.of(context).themeColors.primaryColor,
-                    size: 20,
+                    size: widget.isMobile ? 16 : 20,
                   ),
-                  8.horizontalSpace,
+                  (widget.isMobile ? 6 : 8).horizontalSpace,
                   Text(
                     widget.platform,
                     style: Theme.of(context).styles.bodyRegularMedium.copyWith(
                       color: Theme.of(context).themeColors.primaryLight,
-                      fontSize: 14,
+                      fontSize: widget.isMobile ? 12 : 14,
                     ),
                   ),
                   const Spacer(),
@@ -211,58 +214,97 @@ class _ArticleCardState extends State<_ArticleCard> {
                     widget.date,
                     style: Theme.of(context).styles.bodyRegularMedium.copyWith(
                       color: Theme.of(context).themeColors.disabledButton,
-                      fontSize: 12,
+                      fontSize: widget.isMobile ? 10 : 12,
                     ),
                   ),
                 ],
               ),
-              12.verticalSpace,
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    flex: 3,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          widget.title,
-                          style: Theme.of(context).styles.headingMedium.copyWith(
-                            color: isHovered
-                                ? Theme.of(context).themeColors.primaryLight
-                                : Colors.white,
-                            fontSize: 18,
-                          ),
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        8.verticalSpace,
-                        Text(
-                          widget.description,
-                          style: Theme.of(context).styles.bodyRegularMedium.copyWith(
-                            color: Theme.of(context).themeColors.disabledButton,
-                            fontSize: 14,
-                          ),
-                          maxLines: 3,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ],
-                    ),
-                  ),
-                  16.horizontalSpace,
-                  Expanded(
-                    flex: 2,
-                    child: ClipRRect(
+              (widget.isMobile ? 8 : 12).verticalSpace,
+              widget.isMobile
+              ? Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Image on top for mobile
+                    ClipRRect(
                       borderRadius: 8.radiusAll,
                       child: Image.asset(
                         'assets/icons/${widget.image}',
                         fit: BoxFit.cover,
-                        height: 100,
+                        width: double.infinity,
+                        height: 120,
                       ),
                     ),
-                  ),
-                ],
-              ),
+                    8.verticalSpace,
+                    // Title and description below image
+                    Text(
+                      widget.title,
+                      style: Theme.of(context).styles.headingMedium.copyWith(
+                        color: isHovered
+                            ? Theme.of(context).themeColors.primaryLight
+                            : Colors.white,
+                        fontSize: 16,
+                      ),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    6.verticalSpace,
+                    Text(
+                      widget.description,
+                      style: Theme.of(context).styles.bodyRegularMedium.copyWith(
+                        color: Theme.of(context).themeColors.disabledButton,
+                        fontSize: 12,
+                      ),
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ],
+                )
+              : Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      flex: 3,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            widget.title,
+                            style: Theme.of(context).styles.headingMedium.copyWith(
+                              color: isHovered
+                                  ? Theme.of(context).themeColors.primaryLight
+                                  : Colors.white,
+                              fontSize: 18,
+                            ),
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          8.verticalSpace,
+                          Text(
+                            widget.description,
+                            style: Theme.of(context).styles.bodyRegularMedium.copyWith(
+                              color: Theme.of(context).themeColors.disabledButton,
+                              fontSize: 14,
+                            ),
+                            maxLines: 3,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ],
+                      ),
+                    ),
+                    16.horizontalSpace,
+                    Expanded(
+                      flex: 2,
+                      child: ClipRRect(
+                        borderRadius: 8.radiusAll,
+                        child: Image.asset(
+                          'assets/icons/${widget.image}',
+                          fit: BoxFit.cover,
+                          height: 100,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               const Spacer(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -272,13 +314,14 @@ class _ArticleCardState extends State<_ArticleCard> {
                     style: TextStyle(
                       color: Theme.of(context).themeColors.primaryColor,
                       fontWeight: FontWeight.bold,
+                      fontSize: widget.isMobile ? 12 : 14,
                     ),
                   ),
-                  4.horizontalSpace,
+                  (widget.isMobile ? 2 : 4).horizontalSpace,
                   Icon(
                     Icons.arrow_forward,
                     color: Theme.of(context).themeColors.primaryColor,
-                    size: 16,
+                    size: widget.isMobile ? 14 : 16,
                   ),
                 ],
               ),

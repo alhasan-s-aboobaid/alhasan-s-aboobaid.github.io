@@ -12,6 +12,13 @@ class IconManager {
   static const String dart = "$iconPath/dart.png";
   static const String flutter = "$iconPath/flutter.png";
   static const String springBoot = "$iconPath/spring.png";
+  // Use existing icons as fallbacks
+  static const String android = "$iconPath/flutter.png";
+  static const String git = "$iconPath/flutter.png";
+  static const String cicd = "$iconPath/flutter.png";
+  static const String agile = "$iconPath/flutter.png";
+  static const String api = "$iconPath/flutter.png";
+  static const String education = "$iconPath/flutter.png";
 
   static const String maidsccLogo = "$projectsIconPath/maidscc.png";
   static const String electromall = "$projectsIconPath/electromall.png";
@@ -24,5 +31,6 @@ class IconManager {
 
 
   static const String pattern1 = "$patternsPath/double-bubble-dark.png";
+  static const String pattern2 = "$patternsPath/pattern2.jpg";
 
 }
